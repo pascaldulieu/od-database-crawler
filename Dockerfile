@@ -1,6 +1,7 @@
 FROM golang:alpine as builder
 RUN apk add git && \
 	go get -d -v github.com/terorie/od-database-crawler
+ADD . /go/src/github.com/terorie/od-database-crawler
 WORKDIR /go/src/github.com/terorie/od-database-crawler
 RUN	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /go/od-database-crawler .
 
